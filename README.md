@@ -1,4 +1,4 @@
-# ci-with-skaffold
+# develop-with-skaffold
 
 ## requirements
 
