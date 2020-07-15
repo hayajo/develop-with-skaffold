@@ -1,10 +1,10 @@
 apiVersion: skaffold/v2beta5
 kind: Config
 metadata:
-  name: ci-with-skaffold
+  name: develop-with-skaffold
 build:
   artifacts:
-  - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/ci-with-skaffold
+  - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/develop-with-skaffold
     context: app
   tagPolicy:
     gitCommit: {}
@@ -15,7 +15,7 @@ profiles:
       push: false
       useBuildkit: true
     artifacts:
-    - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/ci-with-skaffold
+    - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/develop-with-skaffold
       context: app
       docker:
         buildArgs:

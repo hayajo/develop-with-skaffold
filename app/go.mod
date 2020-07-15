@@ -1,4 +1,4 @@
-module github.com/hayajo/ci-with-skaffold/app
+module github.com/hayajo/develop-with-skaffold/app
 
 go 1.14
 

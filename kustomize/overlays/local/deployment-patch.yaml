@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ci-with-skaffold
+  name: develop-with-skaffold
 spec:
   template:
     spec:
       containers:
-      - name: ci-with-skaffold
+      - name: develop-with-skaffold
         imagePullPolicy: Never
         env:
           - name: DB_HOST
