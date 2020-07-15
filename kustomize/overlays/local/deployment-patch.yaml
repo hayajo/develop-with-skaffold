@@ -10,9 +10,9 @@ spec:
         imagePullPolicy: Never
         env:
           - name: DB_HOST
-            value: ci-with-skaffold-db
+            value: host.docker.internal
           - name: DB_PORT
-            value: 5432
+            value: 15432
           - name: DB_USER
             value: postgres
           - name: DB_PASS

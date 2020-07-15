@@ -22,7 +22,7 @@ profiles:
           DB_HOST: host.docker.internal
           DB_USER: postgres
           DB_PASS: mysecretpassword
-          DB_PORT: "{{.DB_PORT}}"
+          DB_PORT: 15432
   deploy:
     kubeContext: docker-desktop
     kustomize:
