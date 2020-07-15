@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-with-skaffold
+spec:
+  template:
+    spec:
+      containers:
+      - name: ci-with-skaffold
+        imagePullPolicy: Never
+        env:
+          - name: DB_HOST
+            value: ci-with-skaffold-db
+          - name: DB_PORT
+            value: 5432
+          - name: DB_USER
+            value: postgres
+          - name: DB_PASS
+            value: mysecretpassword

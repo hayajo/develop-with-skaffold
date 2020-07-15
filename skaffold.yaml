@@ -1,0 +1,37 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: ci-with-skaffold
+build:
+  artifacts:
+  - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/ci-with-skaffold
+    context: app
+  tagPolicy:
+    gitCommit: {}
+profiles:
+- name: local
+  build:
+    local:
+      push: false
+      useBuildkit: true
+    artifacts:
+    - image: account_number.dkr.ecr.ap-northeast-1.amazonaws.com/ci-with-skaffold
+      context: app
+      docker:
+        buildArgs:
+          DB_HOST: host.docker.internal
+          DB_USER: postgres
+          DB_PASS: mysecretpassword
+          DB_PORT: "{{.DB_PORT}}"
+  deploy:
+    kubeContext: docker-desktop
+    kustomize:
+      paths:
+      - kustomize/overlays/local/
+# - name: eks
+  # deploy:
+    # kubeContext: arn:aws:eks:ap-northeast-1:account_number:cluster/cluster_name
+    # kustomize:
+      # paths:
+      # - kustomize/overlays/eks/
+
