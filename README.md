@@ -7,7 +7,6 @@
 - kubectl
 - skaffold
 - kustomize
-- envsubst
 
 ## how to use
 
