@@ -30,7 +30,7 @@ func TestHello(t *testing.T) {
 	}
 
 	if string(body) != "Hello World" {
-		t.Errorf("Body expected %q, got %q", "Hello World!", string(body))
+		t.Errorf("Body expected %q, got %q", "Hello World", string(body))
 	}
 }
 
