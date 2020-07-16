@@ -10,8 +10,10 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// SQLConn ...
 var SQLConn *sql.DB
 
+// DBConfig ...
 type DBConfig struct {
 	Host     string `env:"DB_HOST,required"`
 	Port     int    `env:"DB_PORT" envDefault:"5432"`
@@ -36,6 +38,7 @@ func main() {
 	}
 }
 
+// Hello ...
 func Hello(w http.ResponseWriter, r *http.Request) {
 	_, err := w.Write([]byte("Hello World"))
 	if err != nil {
@@ -43,6 +46,7 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// CreateDBConnection ...
 func CreateDBConnection(conf DBConfig) error {
 	var err error
 
