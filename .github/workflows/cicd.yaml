@@ -1,0 +1,30 @@
+name: CI/CD
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      DOCKER_BUILDKIT: 1
+
+    steps:
+    - name: Set up CD tools
+      uses: daisaru11/setup-cd-tools@v1
+      with:
+        kubectl: 1.16.0
+        kustomize: 3.8.0
+        skaffold: 1.12.0
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Resolve dependencies
+      run: make prepare
+
+    - name: Build
+      run: |
+        sed -i -e "s/host\.docker\.internal/$(hostname -I | awk '{print $1}')/" skaffold.yaml
+        skaffold build -p local
+
