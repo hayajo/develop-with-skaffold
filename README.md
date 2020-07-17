@@ -14,3 +14,7 @@
 make prepare
 skaffold dev -p local
 ```
+
+```console
+curl localhost:30080
+```
